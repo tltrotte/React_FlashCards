@@ -1,19 +1,38 @@
+import Beysus from '../images/Beysus.png';
+import Kendrick from '../images/Kendrick.png';
+import tupac from '../images/tupac.png';
+import Outkast from '../images/Outkast.png';
+import LittleDragon from '../images/LittleDragon.png';
+import FrankOcean from '../images/FrankOcean.png';
+
 const INITIAL_STATE = {
   isFront:true,
   currentCardIndex: 0,
   cards: [
     {
-    front:"A Front",
-    back:"A Back"
+    front:"Best female everything",
+    back: Beysus + " Beysus"
   },
   {
-    front:"B Front",
-    back:"B Back"
+    front:"Best Lyricist Alive",
+    back: Kendrick + " Kendrick Lamar"
   },
   {
-    front:"C Front",
-    back:"C Back"
-  }
+    front:"Best Rapper Ever",
+    back: tupac + "Tupac"
+  },
+  {
+  front:"Best Hip Hop Group",
+  back: Outkast + "Outkast"
+},
+{
+  front:"Best Alternative Group",
+  back: LittleDragon + "Little Dragon"
+},
+{
+  front:"Best Male Everything",
+  back: FrankOcean + "Frank Ocean"
+}
 ]
 }
 
@@ -30,7 +49,7 @@ export default function(state = INITIAL_STATE, action){
     return Object.assign({}, state,{
       currentCardIndex:state.currentCardIndex + 1
     });
-    //selects previous 
+    //selects previous
     case "PREV":
     return Object.assign({}, state,{
       currentCardIndex:state.currentCardIndex  - 1
