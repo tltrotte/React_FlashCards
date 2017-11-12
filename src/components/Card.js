@@ -17,13 +17,15 @@ function mapStateToProps(state){
 
   const card = state.cards[state.currentCardIndex];
   let cardText;
+  
   if(state.isFront) {
     cardText = card.front;
   } else{
-    cardText = card.back;
+    cardText= card.back;
   }
   return{
   text:cardText
+
 };
 
 }

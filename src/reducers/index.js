@@ -11,27 +11,27 @@ const INITIAL_STATE = {
   cards: [
     {
     front:"Best female everything",
-    back: Beysus + " Beysus"
+    back: " Beysus"
   },
   {
     front:"Best Lyricist Alive",
-    back: Kendrick + " Kendrick Lamar"
+    back: " Kendrick Lamar"
   },
   {
     front:"Best Rapper Ever",
-    back: tupac + "Tupac"
+    back: " Tupac"
   },
   {
   front:"Best Hip Hop Group",
-  back: Outkast + "Outkast"
+  back: " Outkast"
 },
 {
   front:"Best Alternative Group",
-  back: LittleDragon + "Little Dragon"
+  back: " Little Dragon"
 },
 {
   front:"Best Male Everything",
-  back: FrankOcean + "Frank Ocean"
+  back:" Frank Ocean"
 }
 ]
 }
@@ -54,6 +54,7 @@ export default function(state = INITIAL_STATE, action){
     return Object.assign({}, state,{
       currentCardIndex:state.currentCardIndex  - 1
     });
+    //Flips current card from Sid A to Side B
     case "FLIP":
     if( state.isFront){
       return Object.assign({}, state, {
@@ -64,7 +65,45 @@ export default function(state = INITIAL_STATE, action){
         isFront: true
       });
     }
+      case "SHUFFLE":
+      // this is where the "new array will go once shuffled"
+      let shuffleCards = [];
+      //Original Flashcard Array
+       const flashCards = state.cards;
+       //new Flashcard Array immutability
+       const newFlashArray =  flashCards.map((flashCard) => {
+        flashCard
+      });
 
+      function shuffle(arr) {
+    var len = arr.length;
+
+    for (var i = 0; i < len; i++) {
+         let index = newFlashArray[Math.floor(Math.random() * newFlashArray.length)];
+
+        if (i !== index) {
+            /** swap */
+            var temp = arr[index];
+            arr[index] = arr[i];
+            arr[i] = temp;
+        }
+    }
+
+    //   function shuffle(arr) {
+    //
+    //     while (arr.length) {
+    //       //random array of Flashcard
+    //    let index = newFlashArray[Math.floor(Math.random() * newFlashArray.length)];
+    //
+    //     shuffleCards.push(arr[index]);
+    //     arr.splice(index, 1);
+    // };
+
+return Object.assign({}, state, {
+				currentCardIndex:0,
+				cards: shuffleCards
+			});
+};
     default:
     return state;
   }
