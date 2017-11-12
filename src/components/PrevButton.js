@@ -15,7 +15,7 @@ render(){
 
 function mapStateToProps(state){
   return{
-  disabled: state.currentCardIndex <= state.cards.length + 1
+  disabled: state.currentCardIndex <= 0
 }
 }
 

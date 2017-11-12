@@ -3,6 +3,7 @@ import Card from './Card';
 import NextButton from './NextButton';
 import PrevButton from './PrevButton';
 import FlipButton from './FlipButton';
+import ShuffleButton from './ShuffleButton';
 
 class App extends Component {
   render() {
@@ -11,10 +12,10 @@ class App extends Component {
 
 
       <Card />
-      <NextButton />
       <PrevButton/ >
-      {/* <ShuffleButton/ > */}
       <FlipButton/ >
+      <ShuffleButton/ >
+      <NextButton />
 
       </div>
     );

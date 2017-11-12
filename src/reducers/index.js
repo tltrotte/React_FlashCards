@@ -30,6 +30,7 @@ export default function(state = INITIAL_STATE, action){
     return Object.assign({}, state,{
       currentCardIndex:state.currentCardIndex + 1
     });
+    //selects previous 
     case "PREV":
     return Object.assign({}, state,{
       currentCardIndex:state.currentCardIndex  - 1
