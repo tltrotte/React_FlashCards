@@ -35,12 +35,17 @@ const INITIAL_STATE = {
 }
 ]
 }
+Array.prototype.list_shuffle = function() {
+   var i = this.length,
+     j, temp;
+   while (--i > 0) {
+     j = Math.floor(Math.random() * (i + 1));
+     temp = this[j];
+     this[j] = this[i];
+     this[i] = temp;
+   }
+ }
 
-// This one function is the reducer. The reducer is the heart of Redux. It tells
-// redux what the initial state should be and how it should change the state
-// based on any given action.
-// We usually specify the initial state as the ES6 default value for the state
-// parameter.
 
 export default function(state = INITIAL_STATE, action){
   switch(action.type){
@@ -66,44 +71,12 @@ export default function(state = INITIAL_STATE, action){
       });
     }
       case "SHUFFLE":
-      // this is where the "new array will go once shuffled"
-      let shuffleCards = [];
-      //Original Flashcard Array
-       const flashCards = state.cards;
-       //new Flashcard Array immutability
-       const newFlashArray =  flashCards.map((flashCard) => {
-        flashCard
-      });
-
-      function shuffle(arr) {
-    var len = arr.length;
-
-    for (var i = 0; i < len; i++) {
-         let index = newFlashArray[Math.floor(Math.random() * newFlashArray.length)];
-
-        if (i !== index) {
-            /** swap */
-            var temp = arr[index];
-            arr[index] = arr[i];
-            arr[i] = temp;
-        }
-    }
-
-    //   function shuffle(arr) {
-    //
-    //     while (arr.length) {
-    //       //random array of Flashcard
-    //    let index = newFlashArray[Math.floor(Math.random() * newFlashArray.length)];
-    //
-    //     shuffleCards.push(arr[index]);
-    //     arr.splice(index, 1);
-    // };
-
-return Object.assign({}, state, {
-				currentCardIndex:0,
-				cards: shuffleCards
+      const newCards = state.cards.slice(0);
+                newCards.list_shuffle();
+                return Object.assign({}, state, {
+				           currentCardIndex:0,
+				             cards: newCards
 			});
-};
     default:
     return state;
   }
